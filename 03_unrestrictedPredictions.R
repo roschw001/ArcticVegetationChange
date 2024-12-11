@@ -9,8 +9,8 @@ suppressMessages({
 run <- as.numeric(commandArgs(trailingOnly = T))
 
 {
-  sdm_wd <- "ArcticSDM/SDM_Results/"
-  out_wd <- "Arrays_Unconstraint/"
+  sdm_wd <- "/bioing/user/slisovsk/ArcticSDM/SDM_Results/"
+  out_wd <- "/bioing/user/slisovsk/ArcticSDM/Arrays_distRestricted/"
 }
 
 spResults <- tibble(species = list.files(sdm_wd)) %>%
@@ -30,7 +30,7 @@ if(!file.exists(glue::glue("{out_wd}/{sp}"))) {
 
 ### distance
 proj <- "+proj=laea +lon_0=-170 +lat_0=90"
-load(glue::glue("{sdm_wd}/{sp}/tmp/modelTab.rda"))
+load(glue::glue("/bioing/user/slisovsk/ArcticSDM/SDM_Results/{sp}/tmp/modelTab.rda"))
 
 current <- read_stars(glue::glue("{sdm_wd}/{sp}/{sp}_MaxEnt_calibration.tif")) %>% setNames("present")
 
